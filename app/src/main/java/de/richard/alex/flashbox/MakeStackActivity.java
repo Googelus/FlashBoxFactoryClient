@@ -22,11 +22,12 @@ public class MakeStackActivity extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CardStack("user",name.getText().toString());
+                SPBrowseActivity.addStack(new CardStack(HauptmenuActivity.author,name.getText().toString()));
                 finish();
             }
         });
 
 
     }
+
 }

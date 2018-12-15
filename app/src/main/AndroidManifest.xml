@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.richard.alex.flashbox">
 
+    <uses-permission android:name="android.permission.INTERNET">
+    </uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +21,7 @@
         </activity>
         <activity
             android:name=".PlayActivity"
-            android:label="Play"
+            android:label="FlashboxFactory"
             android:parentActivityName=".SPBrowseActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -42,7 +45,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.richard.alex.flashbox.HauptmenuActivity" />
         </activity>
-        <activity android:name=".MakeCardActivity"></activity>
+        <activity android:name=".MakeCardActivity"
+            android:label="Make new Card">
+        </activity>
+        <activity android:name=".OnlineActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.richard.alex.flashbox.HauptmenuActivity" />
+        </activity>
     </application>
 
 </manifest>

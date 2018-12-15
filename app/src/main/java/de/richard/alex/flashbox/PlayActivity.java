@@ -37,9 +37,9 @@ public class PlayActivity extends AppCompatActivity {
         button_3 = findViewById(R.id.answer3);
 
 
-        //TODO: Get Stack
+        // Get Stack
         int stacknumber =  Integer.parseInt(getIntent().getStringExtra(HauptmenuActivity.EXTRA_STACK));
-        stackbox = HauptmenuActivity.getExampleStacks().get(stacknumber);
+        stackbox = SPBrowseActivity.getStack(stacknumber);
 
 
         // initialise
@@ -125,14 +125,16 @@ public class PlayActivity extends AppCompatActivity {
 
     private void nextCard() {
         cardNumber++;
-        currentCard = stackbox.getCard(cardNumber);
 
-        if (currentCard == null) {
+        if (cardNumber > stackbox.getSize()-1) {
             //TODO: Auswertung
 
-                finish();
+            cardNumber = 0;
 
         }
+
+
+        currentCard = stackbox.getCard(cardNumber);
 
         question.setText(currentCard.getQuestion());
 

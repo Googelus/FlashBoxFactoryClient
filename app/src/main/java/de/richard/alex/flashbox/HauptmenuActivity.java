@@ -12,8 +12,10 @@ import java.util.List;
 public class HauptmenuActivity extends AppCompatActivity {
 
     public static final String EXTRA_STACK;
+    public static String author;
 
     static {
+        author = "user1423";
         EXTRA_STACK = "de.richard.alex.flashbox.extra.STACK";
     }
 
@@ -25,6 +27,7 @@ public class HauptmenuActivity extends AppCompatActivity {
 
         final Button singlePlayer = findViewById(R.id.sp);
         final Button playbutton = findViewById(R.id.Settings);
+        final Button onlinebutton = findViewById(R.id.onlinebutton);
 
         singlePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,11 +43,16 @@ public class HauptmenuActivity extends AppCompatActivity {
             }
         });
 
+        onlinebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startOnline();
+            }
+        });
     }
 
     private void startSP() {
         Intent intent = new Intent(this, SPBrowseActivity.class);
-        intent.putExtra(EXTRA_STACK, 0);
         startActivity(intent);
     }
 
@@ -53,6 +61,10 @@ public class HauptmenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void startOnline() {
+        Intent intent = new Intent(this, OnlineActivity.class);
+        startActivity(intent);
+    }
 
 
 

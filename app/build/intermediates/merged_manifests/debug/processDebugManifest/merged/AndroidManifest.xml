@@ -8,6 +8,9 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="28" />
 
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+
     <application
         android:allowBackup="true"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
@@ -27,7 +30,7 @@
         </activity>
         <activity
             android:name="de.richard.alex.flashbox.PlayActivity"
-            android:label="Play"
+            android:label="FlashboxFactory"
             android:parentActivityName="de.richard.alex.flashbox.SPBrowseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,7 +54,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.richard.alex.flashbox.HauptmenuActivity" />
         </activity>
-        <activity android:name="de.richard.alex.flashbox.MakeCardActivity" />
+        <activity
+            android:name="de.richard.alex.flashbox.MakeCardActivity"
+            android:label="Make new Card" >
+        </activity>
+        <activity android:name="de.richard.alex.flashbox.OnlineActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.richard.alex.flashbox.HauptmenuActivity" />
+        </activity>
     </application>
 
 </manifest>

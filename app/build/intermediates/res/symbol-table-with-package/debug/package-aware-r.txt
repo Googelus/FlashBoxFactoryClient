@@ -1152,8 +1152,14 @@ id line3
 id listMode
 id list_item
 id main_content
+id makeAnswer1
+id makeAnswer2
+id makeAnswer3
+id makeDescription
 id make_stack_finish
 id make_stack_name
+id makequestion
+id makesubmit
 id masked
 id media_actions
 id message
@@ -1169,6 +1175,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id onlinebutton
 id outline
 id packed
 id parallax
@@ -1181,6 +1188,10 @@ id progress_circular
 id progress_horizontal
 id question
 id radio
+id radioButton1
+id radioButton2
+id radioButton3
+id radioGroup
 id ratingBar
 id right
 id right_icon
@@ -1239,6 +1250,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView2
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1262,6 +1274,7 @@ id up
 id useLogo
 id view_offset_helper
 id visible
+id webview
 id withText
 id wrap
 id wrap_content
@@ -1315,6 +1328,7 @@ layout abc_tooltip
 layout activity_hauptmenu
 layout activity_make_card
 layout activity_make_stack
+layout activity_online
 layout activity_play
 layout activity_spbrowse
 layout design_bottom_navigation_item

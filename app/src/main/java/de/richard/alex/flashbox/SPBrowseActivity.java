@@ -28,6 +28,19 @@ public class SPBrowseActivity extends AppCompatActivity {
     private static Context thisContext;
     private static List<CardStack> stacks;
 
+    public static CardStack getStack(int id) {
+        return(stacks.get(id));
+    }
+
+    public static void setStack(int id, CardStack stack) {
+        stacks.remove(id);
+        stacks.add(id,stack);
+    }
+
+    public  static void addStack(CardStack stack) {
+        stacks.add(stack);
+    }
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -202,7 +215,5 @@ public class SPBrowseActivity extends AppCompatActivity {
             return stacks.size();
         }
     }
-
-
 
 }
