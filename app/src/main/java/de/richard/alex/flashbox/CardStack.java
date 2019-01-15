@@ -8,12 +8,25 @@ public class CardStack {
     List<Card> cards;
     String author;
     String name;
+    String info;
+    String tags;
 
 
     public CardStack(String author, String name) {
         this.author = author;
         this.name = name;
         this.cards = new LinkedList<Card>();
+        this.tags = "";
+        this.info = "";
+
+    }
+
+    public CardStack(String author, String name, String info, String tags) {
+        this.author = author;
+        this.name = name;
+        this.cards = new LinkedList<Card>();
+        this.tags = tags;
+        this.info = info;
 
     }
 

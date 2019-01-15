@@ -23,7 +23,7 @@ public class MakeStackActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SPBrowseActivity.addStack(new CardStack(HauptmenuActivity.author,name.getText().toString()));
-                finish();
+                //finish();
             }
         });
 

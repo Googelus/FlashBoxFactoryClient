@@ -20,11 +20,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
+import com.google.gson.Gson;
 
 public class SPBrowseActivity extends AppCompatActivity {
 
+    private static File save;
     private static Context thisContext;
     private static List<CardStack> stacks;
 
@@ -39,6 +46,25 @@ public class SPBrowseActivity extends AppCompatActivity {
 
     public  static void addStack(CardStack stack) {
         stacks.add(stack);
+    }
+
+    public static void save() {
+        try {
+            List<CardStack> cardstacks = stacks;
+            FileOutputStream data = thisContext.openFileOutput("Flashboxsave",MODE_PRIVATE);
+            Gson gson = new Gson();
+            String message = "";
+            while (!(cardstacks.isEmpty())) {
+                message = message + gson.toJson(cardstacks.get(0)) + "\n";
+                cardstacks.remove(0);
+            }
+            data.write(message.getBytes("UTF-8"));
+            data.close();
+            Toast.makeText(thisContext, "Succesfully saved!", Toast.LENGTH_SHORT).show();
+
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -61,8 +87,35 @@ public class SPBrowseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spbrowse);
 
+        save = new File(getFilesDir(), "Flashboxsave");
+
         // get stacks
-        stacks = HauptmenuActivity.getExampleStacks();
+        if (stacks == null) {
+            stacks = new LinkedList<CardStack>();
+            //stacks = HauptmenuActivity.getExampleStacks();
+            // Load Stacks from File
+            try {
+                FileInputStream inputstream = openFileInput("Flashboxsave");
+                InputStreamReader inputreader = new InputStreamReader(inputstream);
+                BufferedReader bufferedreader = new BufferedReader(inputreader);
+                String line;
+                Gson gson = new Gson();
+                CardStack stack;
+                int i = 0;
+                while ((line = bufferedreader.readLine()) != null) {
+                    stack = gson.fromJson(line, CardStack.class);
+                    stacks.add(stack);
+                    i++;
+                }
+                Toast.makeText(getApplicationContext(), i + " Stacks loaded", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            save();
+        }
+
+
         thisContext = SPBrowseActivity.this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -87,7 +140,7 @@ public class SPBrowseActivity extends AppCompatActivity {
     }
 
     private void newStack() {
-        Intent ii = new Intent(this, MakeStackActivity.class);
+        Intent ii = new Intent(thisContext, MakeStackActivity.class);
         startActivity(ii);
     }
 
@@ -182,7 +235,7 @@ public class SPBrowseActivity extends AppCompatActivity {
         thisContext.startActivity(i);
     }
 
-    private static  void editStack(int stacknumber) {
+    private static void editStack(int stacknumber) {
         //TODO: editability
         // BrowseCards? -> delete Cards
         // add Card

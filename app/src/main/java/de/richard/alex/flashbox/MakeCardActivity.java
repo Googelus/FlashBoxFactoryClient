@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
 
 public class MakeCardActivity extends AppCompatActivity {
 
@@ -56,7 +58,8 @@ public class MakeCardActivity extends AppCompatActivity {
                 description.getText().toString(),
                 Integer.parseInt(radioButton.getText().toString())-1));
         SPBrowseActivity.setStack(stackNumber,stack);
-        //TODO: Save
+        Toast.makeText(this, "Card added", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public void rbClick(View view) {

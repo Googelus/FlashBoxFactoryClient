@@ -1134,6 +1134,7 @@ id ghost_view
 id gone
 id group_divider
 id groups
+id hardcodedtextView
 id home
 id homeAsUp
 id icon
@@ -1250,7 +1251,6 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView2
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
