@@ -9,12 +9,12 @@
 
     <header
         android:fragment="de.richard.alex.flashbox.SettingsActivity$NotificationPreferenceFragment"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/pref_header_notifications" />
+        android:icon="@drawable/ic_speaker_phone_black_24dp"
+        android:title="Connection" />
 
     <header
         android:fragment="de.richard.alex.flashbox.SettingsActivity$DataSyncPreferenceFragment"
-        android:icon="@drawable/ic_sync_black_24dp"
-        android:title="@string/pref_header_data_sync" />
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Account" />
 
 </preference-headers>

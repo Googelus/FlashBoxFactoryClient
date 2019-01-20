@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name="de.richard.alex.flashbox.PlayActivity"
-            android:label="FlashboxFactory"
+            android:label="FlashBoxFactory"
             android:parentActivityName="de.richard.alex.flashbox.SPBrowseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -56,13 +56,19 @@
         </activity>
         <activity
             android:name="de.richard.alex.flashbox.MakeCardActivity"
-            android:label="Make new Card" >
-        </activity>
+            android:label="Make new Card" />
         <activity android:name="de.richard.alex.flashbox.OnlineActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.richard.alex.flashbox.HauptmenuActivity" />
         </activity>
+        <activity android:name="de.richard.alex.flashbox.ResultActivity" />
+        <activity android:name="de.richard.alex.flashbox.EditActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.richard.alex.flashbox.SPBrowseActivity" />
+        </activity>
+        <activity android:name="de.richard.alex.flashbox.ShowCardActivity" />
     </application>
 
 </manifest>

@@ -638,6 +638,7 @@ color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ic_launcher_background
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1016,6 +1017,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable flashbox
 drawable ic_info_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -1023,6 +1025,8 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_notifications_black_24dp
+drawable ic_person_black_24dp
+drawable ic_speaker_phone_black_24dp
 drawable ic_sync_black_24dp
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
@@ -1044,6 +1048,7 @@ drawable tooltip_frame_light
 id ALT
 id CTRL
 id FUNCTION
+id Flashbox
 id META
 id Play
 id SHIFT
@@ -1078,6 +1083,7 @@ id answer1
 id answer2
 id answer3
 id appbar
+id appbar2
 id async
 id author
 id auto
@@ -1085,8 +1091,10 @@ id barrier
 id beginning
 id blocking
 id bottom
+id box_content
 id buttonPanel
 id cancel_action
+id cardeditlist
 id cardnumber
 id center
 id center_horizontal
@@ -1097,6 +1105,8 @@ id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id congrats
+id congratstext
 id constraintLayout
 id container
 id content
@@ -1124,6 +1134,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fab
+id fab2
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1141,6 +1152,7 @@ id icon
 id icon_group
 id ifRoom
 id image
+id imageView4
 id info
 id invisible
 id italic
@@ -1157,6 +1169,7 @@ id makeAnswer1
 id makeAnswer2
 id makeAnswer3
 id makeDescription
+id make_stack_description
 id make_stack_finish
 id make_stack_name
 id makequestion
@@ -1185,6 +1198,8 @@ id parentPanel
 id parent_matrix
 id percent
 id pin
+id play_bar
+id play_stackname
 id progress_circular
 id progress_horizontal
 id question
@@ -1194,6 +1209,7 @@ id radioButton2
 id radioButton3
 id radioGroup
 id ratingBar
+id result_button
 id right
 id right_icon
 id right_side
@@ -1222,6 +1238,13 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id show_answer1
+id show_answer2
+id show_answer3
+id show_back
+id show_explanation
+id show_question
+id show_remove
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -1246,6 +1269,7 @@ id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id tags
 id text
 id text2
 id textSpacerNoButtons
@@ -1325,12 +1349,16 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_edit
 layout activity_hauptmenu
 layout activity_make_card
 layout activity_make_stack
 layout activity_online
 layout activity_play
+layout activity_result
+layout activity_show_card
 layout activity_spbrowse
+layout cardlist
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1369,7 +1397,9 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu menu_spbrowse
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
+raw correct
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

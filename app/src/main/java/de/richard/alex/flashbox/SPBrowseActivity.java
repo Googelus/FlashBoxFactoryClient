@@ -1,5 +1,6 @@
 package de.richard.alex.flashbox;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -82,6 +83,11 @@ public class SPBrowseActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private void refreshView(){
+        mViewPager.setVisibility(View.GONE);
+        mViewPager.setVisibility(View.VISIBLE);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,29 +96,26 @@ public class SPBrowseActivity extends AppCompatActivity {
         save = new File(getFilesDir(), "Flashboxsave");
 
         // get stacks
-        if (stacks == null) {
-            stacks = new LinkedList<CardStack>();
-            //stacks = HauptmenuActivity.getExampleStacks();
-            // Load Stacks from File
-            try {
-                FileInputStream inputstream = openFileInput("Flashboxsave");
-                InputStreamReader inputreader = new InputStreamReader(inputstream);
-                BufferedReader bufferedreader = new BufferedReader(inputreader);
-                String line;
-                Gson gson = new Gson();
-                CardStack stack;
-                int i = 0;
-                while ((line = bufferedreader.readLine()) != null) {
-                    stack = gson.fromJson(line, CardStack.class);
-                    stacks.add(stack);
-                    i++;
-                }
-                Toast.makeText(getApplicationContext(), i + " Stacks loaded", Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                e.printStackTrace();
+        if (stacks != null) save();
+        stacks = new LinkedList<CardStack>();
+        //stacks = HauptmenuActivity.getExampleStacks();
+        // Load Stacks from File
+        try {
+            FileInputStream inputstream = openFileInput("Flashboxsave");
+            InputStreamReader inputreader = new InputStreamReader(inputstream);
+            BufferedReader bufferedreader = new BufferedReader(inputreader);
+            String line;
+            Gson gson = new Gson();
+            CardStack stack;
+            int i = 0;
+            while ((line = bufferedreader.readLine()) != null) {
+                stack = gson.fromJson(line, CardStack.class);
+                stacks.add(stack);
+                i++;
             }
-        } else {
-            save();
+            Toast.makeText(getApplicationContext(), i + " Stacks loaded", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 
@@ -141,9 +144,13 @@ public class SPBrowseActivity extends AppCompatActivity {
 
     private void newStack() {
         Intent ii = new Intent(thisContext, MakeStackActivity.class);
-        startActivity(ii);
+        startActivityForResult(ii,1);
     }
 
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        recreate();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -213,14 +220,14 @@ public class SPBrowseActivity extends AppCompatActivity {
             play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    playStack(getArguments().getInt(ARG_SECTION_NUMBER)-1);
+                    playStack(getArguments().getInt(ARG_SECTION_NUMBER)-1,PlaceholderFragment.super.getActivity());
                 }
             });
 
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    editStack(getArguments().getInt(ARG_SECTION_NUMBER)-1);
+                    editStack(getArguments().getInt(ARG_SECTION_NUMBER)-1,PlaceholderFragment.super.getActivity());
                 }
             });
 
@@ -229,19 +236,19 @@ public class SPBrowseActivity extends AppCompatActivity {
 
     }
 
-    private static void playStack(int stacknumber) {
+    private static void playStack(int stacknumber,Activity activity) {
         Intent i = new Intent(thisContext, PlayActivity.class);
         i.putExtra(HauptmenuActivity.EXTRA_STACK, stacknumber + "");
-        thisContext.startActivity(i);
+        activity.startActivityForResult(i,1);
     }
 
-    private static void editStack(int stacknumber) {
+    private static void editStack(int stacknumber, Activity activity) {
         //TODO: editability
         // BrowseCards? -> delete Cards
         // add Card
-        Intent i = new Intent(thisContext, MakeCardActivity.class);
+        Intent i = new Intent(thisContext, EditActivity.class);
         i.putExtra(HauptmenuActivity.EXTRA_STACK, stacknumber + "");
-        thisContext.startActivity(i);
+        activity.startActivityForResult(i,1);
     }
 
 

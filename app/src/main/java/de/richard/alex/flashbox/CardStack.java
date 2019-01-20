@@ -40,6 +40,14 @@ public class CardStack {
         return cards.get(number);
     }
 
+    public void removeCard(int number) {
+        cards.remove(number);
+    }
+
+    public void removeCard(Card card) {
+        cards.remove(card);
+    }
+
     public int getSize() {
         return cards.size();
     }
@@ -58,5 +66,9 @@ public class CardStack {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }

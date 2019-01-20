@@ -12,10 +12,8 @@ import java.util.List;
 public class HauptmenuActivity extends AppCompatActivity {
 
     public static final String EXTRA_STACK;
-    public static String author;
 
     static {
-        author = "user1423";
         EXTRA_STACK = "de.richard.alex.flashbox.extra.STACK";
     }
 

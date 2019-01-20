@@ -12,14 +12,14 @@ import android.widget.Toast;
 
 public class MakeCardActivity extends AppCompatActivity {
 
-    EditText question;
-    EditText answer1;
-    EditText answer2;
-    EditText answer3;
-    EditText description;
-    Button submitButton;
-    RadioGroup radioGroup;
-    RadioButton radioButton;
+    private EditText question;
+    private EditText answer1;
+    private EditText answer2;
+    private EditText answer3;
+    private EditText description;
+    private Button submitButton;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     private static int stackNumber;
     private static CardStack stack;
 
