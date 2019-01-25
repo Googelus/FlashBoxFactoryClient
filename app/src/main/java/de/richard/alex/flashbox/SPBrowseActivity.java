@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,8 +62,7 @@ public class SPBrowseActivity extends AppCompatActivity {
             }
             data.write(message.getBytes("UTF-8"));
             data.close();
-            Toast.makeText(thisContext, "Succesfully saved!", Toast.LENGTH_SHORT).show();
-
+            Log.d("Save","Success");
         }  catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,7 +113,7 @@ public class SPBrowseActivity extends AppCompatActivity {
                 stacks.add(stack);
                 i++;
             }
-            Toast.makeText(getApplicationContext(), i + " Stacks loaded", Toast.LENGTH_SHORT).show();
+            Log.d("Load",i + " Stacks loaded");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -210,12 +210,17 @@ public class SPBrowseActivity extends AppCompatActivity {
             TextView cardNumber = rootView.findViewById(R.id.cardnumber);
             TextView nameView = rootView.findViewById(R.id.stackname);
             TextView authorView = rootView.findViewById(R.id.author);
+            TextView info = rootView.findViewById(R.id.info);
+            TextView tags = rootView.findViewById(R.id.tags);
             Button play = rootView.findViewById(R.id.Play);
             Button edit = rootView.findViewById(R.id.edit_stack);
+            final Button upload = rootView.findViewById(R.id.upload);
 
             nameView.setText(SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getName());
             authorView.setText(SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getAuthor());
-            cardNumber.setText("Kartenanzahl: " + SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getSize());
+            cardNumber.setText("number of cards: " + SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getSize());
+            info.setText(SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getInfo());
+            tags.setText(SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getTags());
 
             play.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -231,6 +236,13 @@ public class SPBrowseActivity extends AppCompatActivity {
                 }
             });
 
+            upload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    upload(getArguments().getInt(ARG_SECTION_NUMBER)-1,PlaceholderFragment.super.getActivity());
+                }
+            });
+
             return rootView;
         }
 
@@ -243,11 +255,14 @@ public class SPBrowseActivity extends AppCompatActivity {
     }
 
     private static void editStack(int stacknumber, Activity activity) {
-        //TODO: editability
-        // BrowseCards? -> delete Cards
-        // add Card
         Intent i = new Intent(thisContext, EditActivity.class);
         i.putExtra(HauptmenuActivity.EXTRA_STACK, stacknumber + "");
+        activity.startActivityForResult(i,1);
+    }
+
+    private static void upload(int stacknumber, Activity activity) {
+        Intent i = new Intent(thisContext, UploadActivity.class);
+        i.putExtra(HauptmenuActivity.EXTRA_STACK,stacknumber + "");
         activity.startActivityForResult(i,1);
     }
 

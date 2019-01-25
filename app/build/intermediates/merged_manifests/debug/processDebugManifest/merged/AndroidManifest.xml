@@ -69,6 +69,7 @@
                 android:value="de.richard.alex.flashbox.SPBrowseActivity" />
         </activity>
         <activity android:name="de.richard.alex.flashbox.ShowCardActivity" />
+        <activity android:name="de.richard.alex.flashbox.UploadActivity" />
     </application>
 
 </manifest>

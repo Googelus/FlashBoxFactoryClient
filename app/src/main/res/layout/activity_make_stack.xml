@@ -47,7 +47,7 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Beschreibung"
+        android:text="Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/make_stack_name" />

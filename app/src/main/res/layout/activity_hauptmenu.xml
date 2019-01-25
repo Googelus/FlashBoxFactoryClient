@@ -15,11 +15,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Mein Karteikasten"
+        android:text="My Boxes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Mein Karteikasten" />
+        tools:text="My Boxes" />
 
     <Button
         android:id="@+id/Settings"
@@ -30,11 +30,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Einstellungen"
+        android:text="Settings"
         app:layout_constraintBottom_toTopOf="@+id/sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Einstellungen" />
+        tools:text="Settings" />
 
     <Button
         android:id="@+id/onlinebutton"

@@ -1107,6 +1107,7 @@ id clip_vertical
 id collapseActionView
 id congrats
 id congratstext
+id connect
 id constraintLayout
 id container
 id content
@@ -1196,6 +1197,9 @@ id parallax
 id parent
 id parentPanel
 id parent_matrix
+id passcheck
+id password
+id passwordedit
 id percent
 id pin
 id play_bar
@@ -1208,7 +1212,6 @@ id radioButton1
 id radioButton2
 id radioButton3
 id radioGroup
-id ratingBar
 id result_button
 id right
 id right_icon
@@ -1295,7 +1298,10 @@ id transition_transform
 id uniform
 id unlabeled
 id up
+id upload
 id useLogo
+id username
+id usernameedit
 id view_offset_helper
 id visible
 id webview
@@ -1358,6 +1364,7 @@ layout activity_play
 layout activity_result
 layout activity_show_card
 layout activity_spbrowse
+layout activity_upload
 layout cardlist
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

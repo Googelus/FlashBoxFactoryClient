@@ -13,14 +13,14 @@
         android:title="Autorenname" />
 
     <EditTextPreference
-        android:visibility="invisible"
+        android:selectable="false"
         android:defaultValue="0"
         android:key="points"
         android:singleLine="true"
         android:title="Current ranking" />
 
     <EditTextPreference
-        android:visibility="invisible"
+        android:selectable="false"
         android:defaultValue="0"
         android:key="times_played"
         android:singleLine="true"

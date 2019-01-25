@@ -1,7 +1,4 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:key="sound_enabled"
-        android:title="Enable sound" />
 
 </PreferenceScreen>

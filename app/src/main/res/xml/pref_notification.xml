@@ -4,13 +4,37 @@
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <EditTextPreference
         android:capitalize="words"
-        android:defaultValue="@string/pref_default_display_name"
+        android:defaultValue="http://1.1.1.1:123/"
         android:inputType="textCapWords"
         android:key="server_adress"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="Server adress" />
+
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="passswitch"
+        android:title="AutoLogin" />
+
+    <EditTextPreference
+        android:dependency="passswitch"
+        android:defaultValue="John Smith"
+        android:key="username"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Username" />
+
+    <EditTextPreference
+        android:summary="*****"
+        android:dependency="passswitch"
+        android:defaultValue="password"
+        android:key="password"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Password"
+        android:inputType="textPassword"/>
 
 
 </PreferenceScreen>
