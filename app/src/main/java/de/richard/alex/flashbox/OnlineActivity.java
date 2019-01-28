@@ -1,5 +1,6 @@
 package de.richard.alex.flashbox;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,7 @@ public class OnlineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_online);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        adress = sharedPreferences.getString("adress","http://www.google.com/");
+        adress = sharedPreferences.getString("server_adress","http://www.google.com/");
         Boolean skip = sharedPreferences.getBoolean("passswitch",false);
         String username = sharedPreferences.getString("username","John Smith");
         String password = sharedPreferences.getString("password","123456");
@@ -55,7 +56,14 @@ public class OnlineActivity extends AppCompatActivity {
                                     String json = response.toString();
                                     Gson gson = new Gson();
                                     CardStack stack = gson.fromJson(json, OnlineStack.class).toCardStack();
-                                    SPBrowseActivity.addStack(stack);
+                                    try {
+                                        SPBrowseActivity.addStack(stack);
+                                        Toast.makeText(OnlineActivity.this, "Download finished", Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        Toast.makeText(OnlineActivity.this,"Download failed",Toast.LENGTH_SHORT).show();
+                                    }
+
                                 }
                             }, new Response.ErrorListener() {
 
@@ -74,6 +82,14 @@ public class OnlineActivity extends AppCompatActivity {
         webview.loadUrl(adress);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (webview.canGoBack()) {
+            webview.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     private void updateScore(String user,String pass,String points,String address) {
         JSONObject jsonobj = new JSONObject();
@@ -82,7 +98,7 @@ public class OnlineActivity extends AppCompatActivity {
             jsonobj.put("username", user);
             jsonobj.put("password",pass);
             jsonobj.put("secret","25b7aa166063e863cb63d2d4ebfcdfe412e93f8c5d38e455");
-            jsonobj.put("score",points);
+            jsonobj.put("score",Integer.parseInt(points));
 
         } catch (Exception e) {
             e.printStackTrace();

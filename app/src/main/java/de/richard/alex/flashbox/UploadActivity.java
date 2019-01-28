@@ -18,12 +18,17 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class UploadActivity extends AppCompatActivity {
 
-    private String address;
+    private String adress;
     private String username;
     private String password;
     private int stackNumber;
@@ -45,7 +50,7 @@ public class UploadActivity extends AppCompatActivity {
         stackNumber =  Integer.parseInt(getIntent().getStringExtra(HauptmenuActivity.EXTRA_STACK));
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(UploadActivity.this);
         Boolean skip = sharedPreferences.getBoolean("passswitch",false);
-        address = sharedPreferences.getString("addres","http://www.google.com/");
+        adress = sharedPreferences.getString("server_adress","http://www.google.com/");
         username = sharedPreferences.getString("username","John Smith");
         password = sharedPreferences.getString("password","123456");
         queue = Volley.newRequestQueue(UploadActivity.this);
@@ -78,17 +83,35 @@ public class UploadActivity extends AppCompatActivity {
     private void upload() {
 
         Gson gson = new Gson();
-        String json = gson.toJson(SPBrowseActivity.getStack(stackNumber));
-        JSONObject postparam = null;
+        JSONObject postparam = new JSONObject();
+        List<JSONObject> cards = new LinkedList<JSONObject>();
+        List<String> taglist = (List<String>) (Arrays.asList(SPBrowseActivity.getStack(stackNumber).getTags().split("\\s+")));
+        for (Card i : SPBrowseActivity.getStack(stackNumber).getCards()) {
+            String ii = gson.toJson(i);
+            try {
+                cards.add(new JSONObject(ii));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
         try {
-            postparam = new JSONObject(json);
+
+            postparam.put("username",username);
+            postparam.put("password",password);
+            postparam.put("tags", new JSONArray(taglist));
+            postparam.put("content",new JSONArray(cards));
+            postparam.put("name",SPBrowseActivity.getStack(stackNumber).getName());
+            postparam.put("info",SPBrowseActivity.getStack(stackNumber).getInfo());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                (address + "/add_cardbox"), postparam,
+                (adress + "/add_cardbox"), postparam,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

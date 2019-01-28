@@ -10,7 +10,7 @@
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="Server adress" />
+        android:title="Server address" />
 
 
     <SwitchPreference

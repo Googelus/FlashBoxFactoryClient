@@ -50,6 +50,10 @@ public class SPBrowseActivity extends AppCompatActivity {
         stacks.add(stack);
     }
 
+    public static void removeStack(int id) {
+        stacks.remove(id);
+    }
+
     public static void save() {
         try {
             List<CardStack> cardstacks = stacks;
@@ -212,9 +216,10 @@ public class SPBrowseActivity extends AppCompatActivity {
             TextView authorView = rootView.findViewById(R.id.author);
             TextView info = rootView.findViewById(R.id.info);
             TextView tags = rootView.findViewById(R.id.tags);
-            Button play = rootView.findViewById(R.id.Play);
-            Button edit = rootView.findViewById(R.id.edit_stack);
+            final Button play = rootView.findViewById(R.id.Play);
+            final Button edit = rootView.findViewById(R.id.edit_stack);
             final Button upload = rootView.findViewById(R.id.upload);
+            final Button remove = rootView.findViewById(R.id.stack_remove);
 
             nameView.setText(SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getName());
             authorView.setText(SPBrowseActivity.stacks.get(getArguments().getInt(ARG_SECTION_NUMBER)-1).getAuthor());
@@ -243,6 +248,13 @@ public class SPBrowseActivity extends AppCompatActivity {
                 }
             });
 
+            remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    removestack(getArguments().getInt(ARG_SECTION_NUMBER)-1,PlaceholderFragment.super.getActivity());
+                }
+            });
+
             return rootView;
         }
 
@@ -266,6 +278,11 @@ public class SPBrowseActivity extends AppCompatActivity {
         activity.startActivityForResult(i,1);
     }
 
+    private static void removestack(int stacknumber, Activity activity) {
+        Intent i = new Intent(thisContext, RemoveActivity.class);
+        i.putExtra(HauptmenuActivity.EXTRA_STACK,stacknumber + "");
+        activity.startActivityForResult(i,1);
+    }
 
 
     /**

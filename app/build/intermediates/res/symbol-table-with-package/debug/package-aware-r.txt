@@ -1212,6 +1212,8 @@ id radioButton1
 id radioButton2
 id radioButton3
 id radioGroup
+id remove_no
+id remove_yes
 id result_button
 id right
 id right_icon
@@ -1261,6 +1263,7 @@ id spread_inside
 id src_atop
 id src_in
 id src_over
+id stack_remove
 id stackname
 id standard
 id start
@@ -1278,6 +1281,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1361,6 +1365,7 @@ layout activity_make_card
 layout activity_make_stack
 layout activity_online
 layout activity_play
+layout activity_remove
 layout activity_result
 layout activity_show_card
 layout activity_spbrowse

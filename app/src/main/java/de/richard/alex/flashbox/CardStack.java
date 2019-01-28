@@ -1,5 +1,6 @@
 package de.richard.alex.flashbox;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -86,5 +87,10 @@ public class CardStack {
 
     public List<Card> getCards() {
         return cards;
+    }
+
+    public OnlineStack toOnlineStack() {
+        List<String> taglist = Arrays.asList(this.tags.split("\\s+"));
+        return(new OnlineStack("ist egal",this.name,this.author,0,taglist,this.cards,this.info));
     }
 }

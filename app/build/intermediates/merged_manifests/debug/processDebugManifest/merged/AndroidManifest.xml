@@ -70,6 +70,7 @@
         </activity>
         <activity android:name="de.richard.alex.flashbox.ShowCardActivity" />
         <activity android:name="de.richard.alex.flashbox.UploadActivity" />
+        <activity android:name="de.richard.alex.flashbox.RemoveActivity" />
     </application>
 
 </manifest>
