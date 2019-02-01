@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -20,7 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,7 +29,6 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
-import com.google.gson.Gson;
 
 public class SPBrowseActivity extends AppCompatActivity {
 
