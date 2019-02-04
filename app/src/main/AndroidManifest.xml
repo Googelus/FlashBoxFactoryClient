@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".PlayActivity"
-            android:label="FlashBoxFactory"
+            android:label="FlashBox"
             android:parentActivityName=".SPBrowseActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

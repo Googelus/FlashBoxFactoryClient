@@ -75,6 +75,10 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        recreate();
+    }
+
     public void makeCard() {
         Intent i = new Intent(EditActivity.this, MakeCardActivity.class);
         i.putExtra(HauptmenuActivity.EXTRA_STACK, stacknumber + "");

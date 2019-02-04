@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name="de.richard.alex.flashbox.PlayActivity"
-            android:label="FlashBoxFactory"
+            android:label="FlashBox"
             android:parentActivityName="de.richard.alex.flashbox.SPBrowseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
